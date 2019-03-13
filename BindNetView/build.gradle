@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+
+
+//ext {
+//    bintrayRepo = 'maven'
+//    bintrayName = 'BindNetView'
+//
+//    publishedGroupId = 'com.develop.thb'
+//    libraryName = 'BindNetView'
+//    artifact = 'BindNetView'
+//
+//    libraryDescription = 'a very useful data binding library'
+//
+//    siteUrl = 'https://github.com/tanghongbin/BindingView'
+//    gitUrl = 'https://github.com/tanghongbin/BindingView'
+//
+//    libraryVersion = '1.5.0'
+//
+//    developerId = 'tanghongbin'
+//    developerName = 'tanghongbin'
+//    developerEmail = '18780475970@163.com'
+//
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+//}
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:28.0.0'
+    compile 'com.android.support:recyclerview-v7:28.0.0'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    //noinspection GradleDependency
+    compile 'com.android.support:support-annotations:28.0.0'
+    //noinspection GradleDependency,GradleCompatible
+    compile 'com.android.support:support-v4:28.0.0'
+    //noinspection GradleDependency,GradleCompatible
+    compile 'com.android.support:recyclerview-v7:28.0.0'
+    //noinspection GradleDependency,GradleCompatible
+    compile 'com.android.support:design:28.0.0'
+}
+
+//Add these lines to publish library to bintray
+//Place it at the end of the file
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+

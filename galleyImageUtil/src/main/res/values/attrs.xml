@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="roundAsCircle" format="boolean" />
+        <attr name="roundedCornerRadius" format="integer"/>
+        <attr name="roundTopLeft" format="boolean"/>
+        <attr name="roundTopRight" format="boolean"/>
+        <attr name="roundBottomRight" format="boolean"/>
+        <attr name="roundBottomLeft" format="boolean"/>
+    </declare-styleable>
+
+
+
+
+
+</resources>

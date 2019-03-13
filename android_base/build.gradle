@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+//apply plugin: 'com.neenbedankt.android-apt'
+//apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    //    ===================下面导入的工具库可随时进行更新和替换在对应的core/commonfigs目录下=================================
+    compile 'com.hwangjr.rxbus:rxbus:1.0.5'
+    compile('com.mylhyl:acp:1.1.7') {
+        exclude group: 'com.android.support'
+    }
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.tang:common-utils:1.2'
+    compile 'com.orhanobut:logger:1.15'
+    compile 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.android.support:design:28.0.0'
+    compile 'me.yokeyword:fragmentation:0.10.1'
+    compile 'com.baoyz.swipemenulistview:library:1.3.0'
+    //okgo需要的依赖包
+    compile 'com.android.support:support-annotations:28.0.0'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-alpha-1'
+    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-alpha-1'
+    // 加入okhttp和rxjava
+}
+//
+//publish {
+//    userOrg = 'tanghongbin'//bintray.com用户名a
+//    groupId = 'com.yiqihudong'//jcenter上的路径
+//    artifactId = 'base_library'//项目名称
+//    publishVersion = '2.3.6'//版本号
+//    desc = 'android 基类工程,修复一些bug'//描述，不重要
+//    website = 'https://github.com/tanghongbin/CommonUtils'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+//}
+//repositories {
+//    mavenCentral()
+//}

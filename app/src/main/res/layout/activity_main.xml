@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <com.ui_componet.search_editext.CustomClearEdit
+            android:id="@+id/mClearEdit"
+            app:clearDrawable="@mipmap/ic_launcher"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+    <com.ui_componet.search_editext.CustomSearchEdit
+            android:layout_width="match_parent"
+            app:deleteDrawable="@mipmap/ic_launcher"
+            app:searchDrawable="@mipmap/ic_launcher"
+            android:layout_marginTop="50dp"
+            android:layout_height="50dp"/>
+
+    <com.ui_componet.image.CustomCircleImageView android:layout_width="100dp"
+                                                 app:cus_roundAsCircle="true"
+                                                 android:src="@mipmap/ic_launcher"
+                                                 android:layout_height="100dp"/>
+
+</LinearLayout>

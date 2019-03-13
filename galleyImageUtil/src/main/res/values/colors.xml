@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="photo_gallery_bg">@color/white</color>
+    <color name="share_background">#86000000</color>
+</resources>

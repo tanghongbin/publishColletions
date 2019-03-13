@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:visibility="gone"
+    android:background="#86000000"
+    android:id="@+id/choose_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_marginRight="@dimen/width_30"
+        android:layout_marginLeft="@dimen/width_30"
+        android:background="@drawable/internal_image_choose_back"
+        android:orientation="vertical"
+        android:layout_above="@+id/cancle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:onClick="onClick"
+            style="@style/internal_tang_crop_image_style"
+            android:text="从相册选择"
+            android:id="@+id/gallery_choose"
+            android:layout_above="@+id/cancle" />
+        <View
+            android:background="@color/color_cccccc"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <TextView
+            style="@style/internal_tang_crop_image_style"
+            android:onClick="onClick"
+            android:layout_width="match_parent"
+            android:text="拍照"
+            android:id="@+id/take_pic"
+            android:layout_above="@+id/gallery_choose"/>
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:background="@drawable/internal_image_choose_back"
+        android:onClick="onClick"
+        style="@style/internal_tang_crop_image_style"
+        android:text="取消"
+        android:id="@+id/cancle"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp" />
+</RelativeLayout>

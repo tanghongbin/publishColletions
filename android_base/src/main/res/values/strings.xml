@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">测试框架</string>
+    <string name="hello">和哦哦</string>
+    <string name="loading_class">
+        com.android_base.core.views.LoadingView
+    </string>
+    <string name="error_view">
+com.android_base.core.views.DefaultErrorView
+    </string>
+</resources>

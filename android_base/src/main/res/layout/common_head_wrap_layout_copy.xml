@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/head_view_backgroud"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+
+        <RelativeLayout
+            android:id="@+id/left_back_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:minWidth="30dp">
+
+            <ImageView
+
+                android:id="@+id/common_back"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@mipmap/icon_back1_p_copy"/>
+
+            <TextView
+                android:paddingLeft="10dp"
+                android:gravity="center"
+                android:text=""
+                android:id="@+id/head_common_left_tv"
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/height_50"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/common_back"
+                android:gravity="center_vertical"
+                android:text=""
+                android:id="@+id/head_common_left_tv_2"
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/height_50"
+                android:layout_height="match_parent"/>
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/head_common_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="标题"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#333"
+            android:textSize="18sp"/>
+
+        <FrameLayout
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/head_common_title">
+
+            <ImageView
+                android:id="@+id/head_common_right_iv2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/head_common_right_tv2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"/>
+
+        </FrameLayout>
+
+
+        <ImageView
+            android:scaleType="center"
+            android:id="@+id/head_common_right_iv_3"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/head_common_right_iv_2"
+            android:layout_toStartOf="@+id/head_common_right_iv_2" />
+
+        <ImageView
+            android:layout_toLeftOf="@+id/head_right_fl"
+            android:scaleType="center"
+            android:id="@+id/head_common_right_iv_2"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            />
+        <FrameLayout
+            android:id="@+id/head_right_fl"
+            android:layout_width="wrap_content"
+            android:minWidth="@dimen/height_50"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:scaleType="center"
+                android:id="@+id/head_common_right_iv"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                />
+
+            <TextView
+                android:paddingRight="@dimen/width_10"
+                android:minHeight="@dimen/height_50"
+                android:id="@+id/head_common_right_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"/>
+        </FrameLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc"/>
+</LinearLayout>
