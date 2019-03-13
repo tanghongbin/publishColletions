@@ -5,16 +5,16 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'ui-component'
 
-    publishedGroupId = 'com.yiqihudong'
+    publishedGroupId = 'com.develop.android'
     libraryName = 'ui-component'
     artifact = 'ui-component'
 
-    libraryDescription = 'a very useful data binding library'
+    libraryDescription = 'a very useful UI library'
 
-    siteUrl = 'https://github.com/tanghongbin/common-view'
-    gitUrl = 'https://github.com/tanghongbin/common-view'
+    siteUrl = 'https://github.com/tanghongbin/publishColletions'
+    gitUrl = 'https://github.com/tanghongbin/publishColletions'
 
-    libraryVersion = '1.2.3'
+    libraryVersion = '1.0.0'
 
     developerId = 'tanghongbin'
     developerName = 'tanghongbin'
