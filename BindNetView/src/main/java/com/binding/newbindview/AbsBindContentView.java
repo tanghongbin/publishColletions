@@ -191,6 +191,11 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
         }
     }
 
+
+    public int getCurrntPage(){
+        return mStateManager.getCurrentPage();
+    }
+
     public List getTotalList(){
         return mStateManager.getmTotalList();
     }
@@ -222,5 +227,21 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
         if (mStateManager != null){
             mStateManager.notifyObserverDataChanged();
         }
+    }
+
+
+    /***
+     * 给空view和错误view添加添加事件
+     * @param onClickListener
+     */
+    public void setNoContentClick(OnClickListener onClickListener){
+
+        Map<ViewConverter.ContentStates, View> viewMaps = mViewConverter.getmStatusMap();
+        DefaultErrorView emptyView = (DefaultErrorView) viewMaps.get(ViewConverter.ContentStates.EMPTY);
+        emptyView.setNoContentClickListener(onClickListener);
+
+        DefaultErrorView errorView = (DefaultErrorView) viewMaps.get(ViewConverter.ContentStates.NET_ERROR);
+        errorView.setNoContentClickListener(onClickListener);
+
     }
 }

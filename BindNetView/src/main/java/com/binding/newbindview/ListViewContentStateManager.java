@@ -6,6 +6,7 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.view.View;
 import com.binding.interfaces.BindNetAdapter;
 import com.binding.interfaces.BindNetMode;
 import com.binding.interfaces.BindRefreshListener;
@@ -109,6 +110,8 @@ public class ListViewContentStateManager {
                 contentStates = ViewConverter.ContentStates.NET_ERROR;
             }
 
+        } else {
+            contentStates = ViewConverter.ContentStates.NORMAL;
         }
         return contentStates;
     }
@@ -164,6 +167,12 @@ public class ListViewContentStateManager {
     public void setOnRefreshListener(BindRefreshListener refresshListener) {
         mRefreshView.setBindNetOnRefreshListener(refresshListener);
     }
+
+    public int getCurrentPage() {
+        return mPageNum;
+    }
+
+
 
     interface NotifyStateChangedListener {
         void nofity(ViewConverter.ContentStates contentState);

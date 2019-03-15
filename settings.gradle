@@ -1,1 +1,1 @@
-include ':app', ':BindNetView', ':galleyImageUtil', ':ui-component', ':android_base'
+include ':app', ':BindNetView', ':image-util', ':ui-component', ':android_base'

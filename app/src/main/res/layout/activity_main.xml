@@ -8,22 +8,15 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <com.ui_componet.search_editext.CustomClearEdit
-            android:id="@+id/mClearEdit"
-            app:clearDrawable="@mipmap/ic_launcher"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"/>
 
-    <com.ui_componet.search_editext.CustomSearchEdit
+    <com.binding.newbindview.BindListContentView
+            android:id="@+id/mBindList"
+            app:managerType="grid"
+            app:spanCount="3"
             android:layout_width="match_parent"
-            app:deleteDrawable="@mipmap/ic_launcher"
-            app:searchDrawable="@mipmap/ic_launcher"
-            android:layout_marginTop="50dp"
-            android:layout_height="50dp"/>
+                                                 android:layout_height="match_parent">
 
-    <com.ui_componet.image.CustomCircleImageView android:layout_width="100dp"
-                                                 app:cus_roundAsCircle="true"
-                                                 android:src="@mipmap/ic_launcher"
-                                                 android:layout_height="100dp"/>
+    </com.binding.newbindview.BindListContentView>
+
 
 </LinearLayout>

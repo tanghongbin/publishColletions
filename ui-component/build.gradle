@@ -1,29 +1,29 @@
 apply plugin: 'com.android.library'
 
-ext {
-
-    bintrayRepo = 'maven'
-    bintrayName = 'ui-component'
-
-    publishedGroupId = 'com.develop.android'
-    libraryName = 'ui-component'
-    artifact = 'ui-component'
-
-    libraryDescription = 'a very useful UI library'
-
-    siteUrl = 'https://github.com/tanghongbin/publishColletions'
-    gitUrl = 'https://github.com/tanghongbin/publishColletions'
-
-    libraryVersion = '1.0.0'
-
-    developerId = 'tanghongbin'
-    developerName = 'tanghongbin'
-    developerEmail = '18780475970@163.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
+//ext {
+//
+//    bintrayRepo = 'maven'
+//    bintrayName = 'ui-component'
+//
+//    publishedGroupId = 'com.develop.android'
+//    libraryName = 'ui-component'
+//    artifact = 'ui-component'
+//
+//    libraryDescription = 'a very useful UI library'
+//
+//    siteUrl = 'https://github.com/tanghongbin/publishColletions'
+//    gitUrl = 'https://github.com/tanghongbin/publishColletions'
+//
+//    libraryVersion = '1.0.0'
+//
+//    developerId = 'tanghongbin'
+//    developerName = 'tanghongbin'
+//    developerEmail = '18780475970@163.com'
+//
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+//}
 
 android {
     compileSdkVersion 28
@@ -57,6 +57,6 @@ dependencies {
 
 //Add these lines to publish library to bintray
 //Place it at the end of the file
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+//apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 

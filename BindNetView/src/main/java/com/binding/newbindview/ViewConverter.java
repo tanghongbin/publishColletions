@@ -27,6 +27,10 @@ public class ViewConverter {
         this.mStatusMap = statusMap;
     }
 
+    public Map<ContentStates, View> getmStatusMap() {
+        return mStatusMap;
+    }
+
     public void convertView(ContentStates contentStates){
         if (!mStatusMap.containsKey(contentStates)){
             throw new IllegalArgumentException("没有定义这个枚举:" + contentStates);
@@ -56,7 +60,7 @@ public class ViewConverter {
     }
 
 
-    public enum ContentStates{
+    public static enum ContentStates{
         EMPTY, // 内容为空
         NORMAL, // 有内容，内容正常
         NET_ERROR, // 网络错误
