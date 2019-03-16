@@ -6,7 +6,6 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.view.View;
 import com.binding.interfaces.BindNetAdapter;
 import com.binding.interfaces.BindNetMode;
 import com.binding.interfaces.BindRefreshListener;
@@ -21,10 +20,9 @@ public class ListViewContentStateManager {
     private BindNetAdapter mAdapter;
     private NotifyStateChangedListener mNotifyStateChangedListener;
 
-
-    private int mPageNum;
     private int mPageSize = 10;
     private int mInitPage = 1;
+    private int mPageNum = mInitPage;
 
     private List mTotalList = new ArrayList();
     private List mItemList;
@@ -68,27 +66,24 @@ public class ListViewContentStateManager {
      * 绑定的集合数据发生变化，自动映射到listview
      */
     private void bindingListChanged() {
-        mRefreshView.onBindNetRefreshComplete();
 
         ViewConverter.ContentStates contentStates = null;
 
         //每次请求的集合数量
         if (mItemList == null || mItemList.size() == 0) {
-            setInternalMode(BindNetMode.PULL_FROM_UP);
             contentStates = buildStateIfEmpty();
             notifyState(contentStates);
+            mRefreshView.onBindNetRefreshComplete(false);
             return;
         }
 
         if (mItemList.size() < mPageSize) {
-            setInternalMode(BindNetMode.PULL_FROM_UP);
-            contentStates = ViewConverter.ContentStates.NORMAL;
-        }
-
-        if (mItemList.size() >= mPageSize) {
-            setInternalMode(BindNetMode.BOTH);
-            contentStates = ViewConverter.ContentStates.NORMAL;
+            contentStates = ViewConverter.ContentStates.CONTENT;
+            mRefreshView.onBindNetRefreshComplete(false);
+        } else if (mItemList.size() >= mPageSize) {
+            contentStates = ViewConverter.ContentStates.CONTENT;
             mPageNum++;
+            mRefreshView.onBindNetRefreshComplete(true);
         }
 
         notifyState(contentStates);
@@ -111,7 +106,7 @@ public class ListViewContentStateManager {
             }
 
         } else {
-            contentStates = ViewConverter.ContentStates.NORMAL;
+            contentStates = ViewConverter.ContentStates.CONTENT;
         }
         return contentStates;
     }
@@ -126,11 +121,12 @@ public class ListViewContentStateManager {
 //        if (mRefreshView.getBindNetMode() == BindNetMode.DISABLED) {
 //            return;
 //        }
-        setMode(mode);
+        // todo 暂时不用
+//        setMode(mode);
     }
 
 
-    public void setMode(BindNetMode mode) {
+    private void setMode(BindNetMode mode) {
         switch (mode) {
             case BOTH:
                 mRefreshView.setModeBoth();

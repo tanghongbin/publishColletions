@@ -11,6 +11,7 @@
         <attr name="errorImage" format="reference"/>
         <attr name="errorMessage" format="string"/>
         <attr name="showDefaultContentIfEmpty" format="boolean"/>
+        <attr name="enabledPreLoadView" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="BindListContentView">

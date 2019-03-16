@@ -50,6 +50,9 @@ public class BindListContentView extends AbsBindContentView {
             extendPullToRefreshRecycleView.setManager(new GridLayoutManager(mContext, spanCount));
         } else if (managerType == ManagerType.STICKY.value) {
             extendPullToRefreshRecycleView.setManager(new StaggeredGridLayoutManager(staggeredCount, staggeredType));
+        } else {
+            // 默认 设置为list
+            extendPullToRefreshRecycleView.setManager(new LinearLayoutManager(mContext));
         }
     }
 

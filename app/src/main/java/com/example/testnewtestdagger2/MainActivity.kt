@@ -2,10 +2,10 @@ package com.example.testnewtestdagger2
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.os.Handler
 import android.widget.Toast
 import com.binding.adapter.BaseRecycleAapter
 import com.binding.interfaces.BindRefreshListener
@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity(),MainView {
     @JvmField
     @Inject
     var testBean: TestBean? = null
-
     @JvmField
     @Inject
-    var mainPresenter: MainPresenter? = null
 
+    var mainPresenter: MainPresenter? =
+    null
     @JvmField
     @Inject
     var bean:HelloBean? = null
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(),MainView {
 
         }
         mBindList.setNoContentClick {
-            requestData(mBindList.currntPage)
+            requestData(3)
         }
 
         Handler().postDelayed({
@@ -77,6 +77,7 @@ class MainActivity : AppCompatActivity(),MainView {
 
 
     }
+
 
     private fun operate(position: Int) {
         if (position % 2 == 0) {
@@ -114,8 +115,9 @@ class MainActivity : AppCompatActivity(),MainView {
     }
 
     private fun requestData(i: Int) {
-        if (i >= 3) {
+        if (i == 1) {
             mBindList.bindList(null)
+            mBindList.notifyObserverDataChanged()
         } else {
             var list = Arrays.asList("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=935292084,2640874667&fm=27&gp=0.jpg"
                 ,"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3496345838,732839400&fm=27&gp=0.jpg"
@@ -128,9 +130,10 @@ class MainActivity : AppCompatActivity(),MainView {
                 ,"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3496345838,732839400&fm=27&gp=0.jpg"
                 ,"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3496345838,732839400&fm=27&gp=0.jpg")
             mBindList.bindList(list)
+            mBindList.notifyObserverDataChanged()
         }
 
-        mBindList.notifyObserverDataChanged()
+
     }
 }
 

@@ -11,10 +11,10 @@
 
     <com.binding.newbindview.BindListContentView
             android:id="@+id/mBindList"
-            app:managerType="grid"
-            app:spanCount="3"
+            app:managerType="list"
+            app:enabledPreLoadView="true"
             android:layout_width="match_parent"
-                                                 android:layout_height="match_parent">
+            android:layout_height="match_parent">
 
     </com.binding.newbindview.BindListContentView>
 

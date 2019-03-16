@@ -49,6 +49,7 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
         int mEmptyImageRes = typedArray.getResourceId(R.styleable.AbsBindContentView_emptyImage, 0);
         String mEmptyMessage = typedArray.getString(R.styleable.AbsBindContentView_emptyMessage);
         String mErrorMessage = typedArray.getString(R.styleable.AbsBindContentView_errorMessage);
+        boolean enabledPreLoadView = typedArray.getBoolean(R.styleable.AbsBindContentView_enabledPreLoadView,true);
         typedArray.recycle();
 
         HintConfigration hintConfigration = new HintConfigration(mEmptyImageRes,mEmptyMessage,
@@ -59,12 +60,20 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
 
         mStateManager = new ListViewContentStateManager(twoTuples.getM(),mContext);
         mViewConverter = new ViewConverter();
+
         mViewConverter.setConvertedContainer(this);
 
         mViewConverter.setStatusMap(twoTuples.getK());
 
-        // 设置默认的加载视图
-        mViewConverter.convertView(ViewConverter.ContentStates.PRE_LOAD);
+
+        // 设置默认的加载视图,如果不启用那么则是contentview
+        ViewConverter.ContentStates initStatus = null;
+        if (enabledPreLoadView) {
+            initStatus = ViewConverter.ContentStates.PRE_LOAD;
+        } else  {
+            initStatus = ViewConverter.ContentStates.CONTENT;
+        }
+        mViewConverter.convertView(initStatus);
 
         mStateManager.setmNotifyStateChangedListener(this);
     }
@@ -94,7 +103,7 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
         Map<ViewConverter.ContentStates,View> viewMap = new HashMap<>();
 
         viewMap.put(ViewConverter.ContentStates.PRE_LOAD,preLoadView);
-        viewMap.put(ViewConverter.ContentStates.NORMAL,contentView);
+        viewMap.put(ViewConverter.ContentStates.CONTENT,contentView);
         viewMap.put(ViewConverter.ContentStates.EMPTY,emptyView);
         viewMap.put(ViewConverter.ContentStates.NET_ERROR,errorView);
 
@@ -224,9 +233,7 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
      * 通知数据改变
      */
     public void notifyObserverDataChanged() {
-        if (mStateManager != null){
-            mStateManager.notifyObserverDataChanged();
-        }
+        mStateManager.notifyObserverDataChanged();
     }
 
 

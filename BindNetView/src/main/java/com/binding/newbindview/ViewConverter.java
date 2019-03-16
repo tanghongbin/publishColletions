@@ -62,7 +62,7 @@ public class ViewConverter {
 
     public static enum ContentStates{
         EMPTY, // 内容为空
-        NORMAL, // 有内容，内容正常
+        CONTENT, // 有内容，内容正常
         NET_ERROR, // 网络错误
         PRE_LOAD // 预加载
     }

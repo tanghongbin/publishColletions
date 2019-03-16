@@ -19,6 +19,7 @@ import com.binding.interfaces.BindNetMode;
 import com.binding.interfaces.BindRefreshListener;
 import com.binding.interfaces.NetRefreshViewInterface;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 
@@ -46,7 +47,8 @@ public abstract class BasePullToRefreshView<VIEW extends View> extends FrameLayo
         mContext = context;
         LayoutInflater.from(mContext).inflate(getRefreshLayoutId(), this);
         mSmartRefreshLayout = (SmartRefreshLayout) findViewById(R.id.bind_net_refreshLayout);
-        mSmartRefreshLayout.setEnableAutoLoadMore(false);
+        mSmartRefreshLayout.setEnableAutoLoadMore(true);
+        mSmartRefreshLayout.setEnableFooterFollowWhenNoMoreData(true);
         mrefreshView = (VIEW) findViewById(getRefreshViewId());
         hookInit();
     }
@@ -100,23 +102,36 @@ public abstract class BasePullToRefreshView<VIEW extends View> extends FrameLayo
         return this;
     }
 
+    /***
+     * Log.i("TAG", "启用加载更多和刷新");
+     */
     @Override
     public void setModeBoth() {
         mSmartRefreshLayout.setEnableLoadMore(true);
         mSmartRefreshLayout.setEnableRefresh(true);
     }
 
+    /***
+     * Log.i("TAG", "禁用加载更多，启用刷新");
+     */
     @Override
     public void setModePullFromUp() {
-        Log.i("TAG", "警用加载更多");
-        mSmartRefreshLayout.setEnableLoadMore(true);
+        Log.i("TAG", "禁用加载更多");
+        mSmartRefreshLayout.setEnableLoadMore(false);
+        mSmartRefreshLayout.setEnableRefresh(true);
     }
 
+    /***
+     * Log.i("TAG", "启用加载更多和刷新");
+     */
     @Override
     public void setModePullFromDown() {
-        mSmartRefreshLayout.setEnableRefresh(false);
+        mSmartRefreshLayout.setEnableLoadMore(true);
+        mSmartRefreshLayout.setEnableRefresh(true);
     }
-
+    /***
+     * Log.i("TAG", "禁用加载更多和刷新");
+     */
     @Override
     public void setModeDisabled() {
         mSmartRefreshLayout.setEnableLoadMore(false);
@@ -124,14 +139,21 @@ public abstract class BasePullToRefreshView<VIEW extends View> extends FrameLayo
     }
 
     @Override
-    public void onBindNetRefreshComplete() {
+    public void onBindNetRefreshComplete(boolean hasMoreData) {
         RefreshState state = mSmartRefreshLayout.getState();
         if (state == RefreshState.Loading) {
-            mSmartRefreshLayout.finishLoadMore();
+            if (hasMoreData) {
+                mSmartRefreshLayout.finishLoadMore();
+            } else {
+                mSmartRefreshLayout.finishLoadMoreWithNoMoreData();
+            }
+
         } else if (state == RefreshState.Refreshing) {
             mSmartRefreshLayout.finishRefresh();
+            mSmartRefreshLayout.resetNoMoreData();
         }
     }
+
     @Override
     public BindNetMode getBindNetMode() {
         return BindNetMode.BOTH;

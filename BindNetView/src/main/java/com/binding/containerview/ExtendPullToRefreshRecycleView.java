@@ -2,6 +2,7 @@ package com.binding.containerview;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.widget.AdapterView;
 
@@ -34,6 +35,10 @@ public class ExtendPullToRefreshRecycleView extends BasePullToRefreshView<Recycl
     }
 
 
+    /***
+     * 在adapter里边已经支持了，没必要再写，而且写的代价颇高
+     * @param onItemClickListener
+     */
     @Deprecated
     @Override
     public void setBindNetOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
@@ -42,9 +47,10 @@ public class ExtendPullToRefreshRecycleView extends BasePullToRefreshView<Recycl
 
     @Override
     protected void hookInit() {
+        mrefreshView.setItemAnimator(new DefaultItemAnimator());
     }
 
-    public void setManager(RecyclerView.LayoutManager linearLayoutManager){
-        mrefreshView.setLayoutManager(linearLayoutManager);
+    public void setManager(RecyclerView.LayoutManager layoutManager){
+        mrefreshView.setLayoutManager(layoutManager);
     }
 }

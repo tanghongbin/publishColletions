@@ -12,7 +12,7 @@ ui-component:             compile 'com.develop.android:ui-component:1.0.0'
 
 
 
-BindNetView:              compile 'com.develop.thb:BindNetView:1.5.0'
+BindNetView:              compile 'com.develop.thb:BindNetView:1.6.2'
 
 
              要在依赖里面添加这个地址   maven {
@@ -20,4 +20,4 @@ BindNetView:              compile 'com.develop.thb:BindNetView:1.5.0'
                                     }
                                     
                                     
- image-util:               compile 'com.yiqihudong:image-util:2.5.6'
+ image-util:               compile 'com.yiqihudong:image-util:2.6.0'
