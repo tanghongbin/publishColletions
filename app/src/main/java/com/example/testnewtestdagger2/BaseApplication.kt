@@ -2,30 +2,17 @@ package com.example.testnewtestdagger2
 
 import android.app.Activity
 import android.app.Application
-import com.example.testnewtestdagger2.dagger.DaggerAppComponent
 import com.yiqihudong.imageutil.ContextManager
 import com.yiqihudong.imageutil.ImageSelectedHelper
 import com.yiqihudong.imageutil.view.ImageSingleChooseActivity
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
-import javax.inject.Inject
 
-class BaseApplication : Application(),HasActivityInjector {
+class BaseApplication : Application() {
 
-    @JvmField
-    @Inject
-    var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>? = null
-
-    override fun activityInjector(): DispatchingAndroidInjector<Activity>? {
-       return dispatchingActivityInjector
-    }
 
 
     override fun onCreate() {
         super.onCreate()
 
-        DaggerAppComponent.builder().build().inject(this)
 
         ContextManager.init(this)
 
@@ -36,4 +23,8 @@ class BaseApplication : Application(),HasActivityInjector {
     }
 
 
+    override fun onTerminate() {
+        super.onTerminate()
+
+    }
 }

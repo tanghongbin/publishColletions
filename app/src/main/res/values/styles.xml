@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">#fe82b7</item>
+        <item name="colorPrimaryDark">#fe82b7</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowEnterAnimation">@anim/activity_enter</item>
         <item name="android:windowExitAnimation">@anim/activity_exist</item>
