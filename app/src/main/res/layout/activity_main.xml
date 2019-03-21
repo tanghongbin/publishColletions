@@ -9,6 +9,13 @@
         tools:context=".MainActivity">
 
 
+    <com.binding.newbindview.BindListContentView
+            android:layout_width="match_parent"
+                                                 android:id="@+id/mBindList"
+                                                 app:managerType="list"
+                                                 android:layout_height="match_parent">
+
+    </com.binding.newbindview.BindListContentView>
 
 
 </LinearLayout>

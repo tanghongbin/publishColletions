@@ -151,6 +151,12 @@ public abstract class BasePullToRefreshView<VIEW extends View> extends FrameLayo
         } else if (state == RefreshState.Refreshing) {
             mSmartRefreshLayout.finishRefresh();
             mSmartRefreshLayout.resetNoMoreData();
+        } else {
+            if (hasMoreData) {
+                mSmartRefreshLayout.setNoMoreData(true);
+            } else {
+                mSmartRefreshLayout.setNoMoreData(false);
+            }
         }
     }
 

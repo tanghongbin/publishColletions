@@ -6,6 +6,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
@@ -86,6 +89,7 @@ public class PhotoWallAdapter extends PagerAdapter {
         }
     }
 
+
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((View) object);//删除页卡
@@ -108,6 +112,7 @@ public class PhotoWallAdapter extends PagerAdapter {
         }
         Options options = new Options(WindowUtil.getDisplayMetrics(context).widthPixels,
                 WindowUtil.getDisplayMetrics(context).heightPixels);
+        Glide.with(ContextManager.getmContext()).load(uri).into(photoView);
         ImageLoaderUtil.downLoadImageLoader(uri, options, new RequestListener<Drawable>() {
             @Override
             public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
@@ -122,7 +127,7 @@ public class PhotoWallAdapter extends PagerAdapter {
             }
 
             @Override
-            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+            public boolean onResourceReady(final Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                 Log.i(PhotoWallAdapter.class.getName(),"图片加载成功");
                 photoView.setImageDrawable(resource);
                 return false;
