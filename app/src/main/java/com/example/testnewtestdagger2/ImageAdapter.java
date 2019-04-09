@@ -5,8 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import com.ui_componet.list.NestedGridView;
-import com.yiqihudong.imageutil.utils.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -40,7 +38,6 @@ public class ImageAdapter extends BaseAdapter {
             convertView = View.inflate(mContext,R.layout.item_image,null);
         }
         ImageView imageView = convertView.findViewById(R.id.mImage);
-        ImageLoaderUtil.displayImage(mList.get(position),imageView);
 
         return convertView;
     }

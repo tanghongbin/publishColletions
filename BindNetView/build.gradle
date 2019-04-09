@@ -46,36 +46,38 @@ dependencies {
     compile 'com.android.support:design:28.0.0'
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-21'
+    compile 'com.baoyz.swipemenulistview:library:1.3.0'
 }
 
 //Add these lines to publish library to bintray
 //Place it at the end of the file
 
-//    ext {
-//        bintrayRepo = 'maven'
-//        bintrayName = 'BindNetView'
-//
-//        publishedGroupId = 'com.develop.thb'
-//        libraryName = 'BindNetView'
-//        artifact = 'BindNetView'
-//
-//        libraryDescription = 'a very useful data binding library'
-//
-//        siteUrl = 'https://github.com/tanghongbin/BindingView'
-//        gitUrl = 'https://github.com/tanghongbin/BindingView'
-//
-//        libraryVersion = '1.7.0'
-//
-//        developerId = 'tanghongbin'
-//        developerName = 'tanghongbin'
-//        developerEmail = '18780475970@163.com'
-//
-//        licenseName = 'The Apache Software License, Version 2.0'
-//        licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-//        allLicenses = ["Apache-2.0"]
-//    }
-//
+    ext {
+        bintrayRepo = 'maven'
+        bintrayName = 'BindNetView'
+
+        publishedGroupId = 'com.develop.thb'
+        libraryName = 'BindNetView'
+        artifact = 'BindNetView'
+
+        libraryDescription = 'a very useful data binding library'
+
+        siteUrl = 'https://github.com/tanghongbin/BindingView'
+        gitUrl = 'https://github.com/tanghongbin/BindingView'
+
+        libraryVersion = '1.8.2'
+
+        developerId = 'tanghongbin'
+        developerName = 'tanghongbin'
+        developerEmail = '18780475970@163.com'
+
+        licenseName = 'The Apache Software License, Version 2.0'
+        licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+        allLicenses = ["Apache-2.0"]
+    }
+
+// 下面这个网络连接暂时不用
 //    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 //    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
-//apply from: 'bintray.gradle'
-//apply from: 'install.gradle'
+apply from: 'bintray.gradle'
+apply from: 'install.gradle'

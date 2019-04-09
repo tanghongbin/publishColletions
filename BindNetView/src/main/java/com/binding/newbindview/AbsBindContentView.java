@@ -18,6 +18,7 @@ import java.util.Map;
 import com.binding.ClickableView;
 import com.binding.DefaultErrorView;
 import com.binding.R;
+import com.binding.containerview.BasePullToRefreshView;
 import com.binding.interfaces.BindNetAdapter;
 import com.binding.interfaces.BindRefreshListener;
 import com.binding.interfaces.NetRefreshViewInterface;
@@ -29,6 +30,7 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
     protected Context mContext;
 
 
+
     public AbsBindContentView(@NonNull Context context) {
         super(context);
         init(context,null);
@@ -37,8 +39,9 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
     public AbsBindContentView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context,attrs);
-
     }
+
+    public abstract View getRefreshView();
 
     //初始化
     protected final void init(Context context, AttributeSet attrs) {

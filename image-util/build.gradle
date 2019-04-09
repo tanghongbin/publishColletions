@@ -46,32 +46,32 @@ dependencies {
 //这是新版本申请通过之后用这个
 //if (project.getName() == uploadModule) {
 //
-    ext {
-        bintrayRepo = 'maven'
-        bintrayName = 'image-util'
-
-        publishedGroupId = 'com.yiqihudong'
-        libraryName = 'image-util'
-        artifact = 'image-util'
-
-        libraryDescription = '更新了图库和图片墙进入的方式，更加直观,修复图片选择器的bug'
-
-        siteUrl = 'https://github.com/tanghongbin/publishColletions'
-        gitUrl = 'https://github.com/tanghongbin/publishColletions'
-
-        libraryVersion = '2.6.5'
-
-        developerId = 'tanghongbin'
-        developerName = 'tanghongbin'
-        developerEmail = '18780475970@163.com'
-
-        licenseName = 'The Apache Software License, Version 2.0'
-        licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-        allLicenses = ["Apache-2.0"]
-    }
-
-apply from: 'bintray.gradle'
-apply from: 'install.gradle'
+//    ext {
+//        bintrayRepo = 'maven'
+//        bintrayName = 'image-util'
+//
+//        publishedGroupId = 'com.yiqihudong'
+//        libraryName = 'image-util'
+//        artifact = 'image-util'
+//
+//        libraryDescription = '更新了图库和图片墙进入的方式，更加直观,修复图片选择器的bug'
+//
+//        siteUrl = 'https://github.com/tanghongbin/publishColletions'
+//        gitUrl = 'https://github.com/tanghongbin/publishColletions'
+//
+//        libraryVersion = '2.6.5'
+//
+//        developerId = 'tanghongbin'
+//        developerName = 'tanghongbin'
+//        developerEmail = '18780475970@163.com'
+//
+//        licenseName = 'The Apache Software License, Version 2.0'
+//        licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//        allLicenses = ["Apache-2.0"]
+//    }
+//
+//apply from: 'bintray.gradle'
+//apply from: 'install.gradle'
 
 //    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 //    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

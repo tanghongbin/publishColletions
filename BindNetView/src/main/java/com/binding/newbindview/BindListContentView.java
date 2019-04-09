@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 
+import android.view.View;
 import com.binding.R;
 import com.binding.containerview.ExtendPullToRefreshRecycleView;
 import com.binding.interfaces.NetRefreshViewInterface;
@@ -26,6 +27,11 @@ public class BindListContentView extends AbsBindContentView {
     public BindListContentView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         attrInit(context, attrs);
+    }
+
+    @Override
+    public View getRefreshView() {
+        return extendPullToRefreshRecycleView.getBindNetRefreshableView();
     }
 
     private void attrInit(Context context, AttributeSet attrs) {

@@ -24,6 +24,7 @@
                 android:textColor="@color/gray"
                 android:textSize="@dimen/text_size_17"
                 android:id="@+id/no_content"
+                android:gravity="center"
                 android:drawablePadding="@dimen/width_10"
                 android:layout_centerInParent="true"
                 android:text="暂无数据，点击刷新"

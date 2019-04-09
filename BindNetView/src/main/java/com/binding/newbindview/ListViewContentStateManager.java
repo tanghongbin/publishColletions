@@ -73,17 +73,17 @@ public class ListViewContentStateManager {
         if (mItemList == null || mItemList.size() == 0) {
             contentStates = buildStateIfEmpty();
             notifyState(contentStates);
-            mRefreshView.onBindNetRefreshComplete(false);
+            mRefreshView.onBindNetRefreshComplete(true);
             return;
         }
 
         if (mItemList.size() < mPageSize) {
             contentStates = ViewConverter.ContentStates.CONTENT;
-            mRefreshView.onBindNetRefreshComplete(false);
+            mRefreshView.onBindNetRefreshComplete(true);
         } else if (mItemList.size() >= mPageSize) {
             contentStates = ViewConverter.ContentStates.CONTENT;
             mPageNum++;
-            mRefreshView.onBindNetRefreshComplete(true);
+            mRefreshView.onBindNetRefreshComplete(false);
         }
 
         notifyState(contentStates);

@@ -46,12 +46,14 @@ public abstract class BasePullToRefreshView<VIEW extends View> extends FrameLayo
     private void init(@NonNull Context context) {
         mContext = context;
         LayoutInflater.from(mContext).inflate(getRefreshLayoutId(), this);
-        mSmartRefreshLayout = (SmartRefreshLayout) findViewById(R.id.bind_net_refreshLayout);
+        mSmartRefreshLayout = (SmartRefreshLayout) findViewById(getSmartRefreshLayoutId());
         mSmartRefreshLayout.setEnableAutoLoadMore(true);
         mSmartRefreshLayout.setEnableFooterFollowWhenNoMoreData(true);
         mrefreshView = (VIEW) findViewById(getRefreshViewId());
         hookInit();
     }
+
+    protected abstract int getSmartRefreshLayoutId();
 
     protected void hookInit() {
 
@@ -139,20 +141,19 @@ public abstract class BasePullToRefreshView<VIEW extends View> extends FrameLayo
     }
 
     @Override
-    public void onBindNetRefreshComplete(boolean hasMoreData) {
+    public void onBindNetRefreshComplete(boolean noMoreData) {
         RefreshState state = mSmartRefreshLayout.getState();
         if (state == RefreshState.Loading) {
-            if (hasMoreData) {
-                mSmartRefreshLayout.finishLoadMore();
-            } else {
+            if (noMoreData) {
                 mSmartRefreshLayout.finishLoadMoreWithNoMoreData();
+            } else {
+                mSmartRefreshLayout.finishLoadMore();
             }
-
         } else if (state == RefreshState.Refreshing) {
             mSmartRefreshLayout.finishRefresh();
             mSmartRefreshLayout.resetNoMoreData();
         } else {
-            if (hasMoreData) {
+            if (noMoreData) {
                 mSmartRefreshLayout.setNoMoreData(true);
             } else {
                 mSmartRefreshLayout.setNoMoreData(false);

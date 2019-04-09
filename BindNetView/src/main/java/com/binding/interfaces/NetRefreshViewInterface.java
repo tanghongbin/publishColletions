@@ -20,7 +20,7 @@ public interface NetRefreshViewInterface {
     void setModePullFromDown();
     void setModeDisabled();
 
-    void onBindNetRefreshComplete(boolean hasMoreData);
+    void onBindNetRefreshComplete(boolean noMoreData);
 
     BindNetMode getBindNetMode();
 }

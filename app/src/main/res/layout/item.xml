@@ -6,21 +6,11 @@
               android:paddingBottom="15dp"
                                              android:layout_height="wrap_content">
 
-    <ImageView android:layout_width="match_parent"
-              android:text=""
-              android:id="@+id/mText"
-              android:textSize="16sp"
-              android:textColor="#222222"
-              android:layout_height="90dp"/>
-
-    <com.ui_componet.list.NestedGridView
-            android:id="@+id/mImageGrid"
-            android:layout_width="match_parent"
-            android:numColumns="3"
-            android:horizontalSpacing="@dimen/dp_10"
-            android:verticalSpacing="@dimen/dp_10"
-                                         android:layout_height="wrap_content">
-
-    </com.ui_componet.list.NestedGridView>
+   <TextView android:layout_width="match_parent"
+             android:text="sfsdf"
+             android:textColor="#222222"
+             android:textSize="15sp"
+             android:id="@+id/mText"
+             android:layout_height="wrap_content"/>
 
 </LinearLayout>

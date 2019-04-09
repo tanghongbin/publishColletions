@@ -5,7 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.widget.AdapterView;
-
+import android.widget.ListAdapter;
+import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.binding.R;
 import com.binding.interfaces.BindNetAdapter;
 
@@ -14,29 +15,29 @@ import com.binding.interfaces.BindNetAdapter;
  * Created by tanghongbin on 2017/9/25.
  */
 
-public class ExtendPullToRefreshRecycleView extends BasePullToRefreshView<RecyclerView> {
-    public ExtendPullToRefreshRecycleView(@NonNull Context context) {
+public class ExtendPullToRefreshMenuListView extends BasePullToRefreshView<SwipeMenuListView> {
+    public ExtendPullToRefreshMenuListView(@NonNull Context context) {
         super(context);
     }
 
     @Override
     protected int getSmartRefreshLayoutId() {
-        return R.id.bind_net_refreshLayout;
+        return R.id.swipe_menu_refresh_view;
     }
 
     @Override
     protected int getRefreshViewId() {
-        return R.id.bind_net_recycleView;
+        return R.id.bind_net_swipemenu;
     }
 
     @Override
     protected int getRefreshLayoutId() {
-        return R.layout.net_refresh_recycleview;
+        return R.layout.net_refresh_menulist;
     }
 
     @Override
     public void setBindNetAdapter(BindNetAdapter adapter) {
-        mrefreshView.setAdapter((RecyclerView.Adapter) adapter);
+        mrefreshView.setAdapter((ListAdapter) adapter);
     }
 
 
@@ -52,10 +53,6 @@ public class ExtendPullToRefreshRecycleView extends BasePullToRefreshView<Recycl
 
     @Override
     protected void hookInit() {
-        mrefreshView.setItemAnimator(new DefaultItemAnimator());
     }
 
-    public void setManager(RecyclerView.LayoutManager layoutManager){
-        mrefreshView.setLayoutManager(layoutManager);
-    }
 }
