@@ -1,6 +1,8 @@
 package com.binding.containerview;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -32,6 +34,7 @@ public abstract class BasePullToRefreshView<VIEW extends View> extends FrameLayo
     protected Context mContext;
     protected SmartRefreshLayout mSmartRefreshLayout;
     protected VIEW mrefreshView;
+    protected Handler mHandler;
 
     public BasePullToRefreshView(@NonNull Context context) {
         super(context);
@@ -45,6 +48,7 @@ public abstract class BasePullToRefreshView<VIEW extends View> extends FrameLayo
 
     private void init(@NonNull Context context) {
         mContext = context;
+        mHandler = new Handler(Looper.getMainLooper());
         LayoutInflater.from(mContext).inflate(getRefreshLayoutId(), this);
         mSmartRefreshLayout = (SmartRefreshLayout) findViewById(getSmartRefreshLayoutId());
         mSmartRefreshLayout.setEnableAutoLoadMore(true);
@@ -150,8 +154,18 @@ public abstract class BasePullToRefreshView<VIEW extends View> extends FrameLayo
                 mSmartRefreshLayout.finishLoadMore();
             }
         } else if (state == RefreshState.Refreshing) {
+            // 这里有个300毫秒的延迟，设置没有数据要在350ms之后
             mSmartRefreshLayout.finishRefresh();
-            mSmartRefreshLayout.resetNoMoreData();
+            if (noMoreData){
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSmartRefreshLayout.setNoMoreData(true);
+                    }
+                },400);
+            } else {
+                mSmartRefreshLayout.resetNoMoreData();
+            }
         } else {
             if (noMoreData) {
                 mSmartRefreshLayout.setNoMoreData(true);
