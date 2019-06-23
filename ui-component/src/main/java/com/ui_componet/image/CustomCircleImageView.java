@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.widget.ImageView;
 import com.ui_componet.R;
 
 public class CustomCircleImageView extends AppCompatImageView {

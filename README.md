@@ -22,7 +22,8 @@ BindNetView:              compile 'com.develop.thb:BindNetView:1.8.2'
                                     
  image-util:               compile 'com.yiqihudong:image-util:2.6.5'
  
- // 用的比较少了
+ 
+ // 用的比较少了，主要功能实在太多，扩展性不强，现在都拆分成小块了
   base_library:            compile 'com.yiqihudong:base_library:2.3.6'
   
   

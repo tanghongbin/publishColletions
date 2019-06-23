@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cardiac.live.com.livecardiacandroid.view.HeadView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:id="@+id/mHeadView"
+        android:layout_height="45dp">
+
+</cardiac.live.com.livecardiacandroid.view.HeadView>

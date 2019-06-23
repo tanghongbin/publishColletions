@@ -8,6 +8,10 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+    <Button android:layout_width="wrap_content"
+            android:text="图片墙"
+            android:onClick="photoWall"
+            android:layout_height="wrap_content"/>
 
     <com.binding.newbindview.BindMenuListView
             android:layout_width="match_parent"
