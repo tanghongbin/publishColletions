@@ -61,6 +61,9 @@ public class ListViewContentStateManager {
         // 设置错误提示内容
     }
 
+    public int getmPageSize() {
+        return mPageSize;
+    }
 
     /**
      * 绑定的集合数据发生变化，自动映射到listview
@@ -126,16 +129,13 @@ public class ListViewContentStateManager {
     }
 
 
-    private void setMode(BindNetMode mode) {
+    public void setMode(BindNetMode mode) {
         switch (mode) {
             case BOTH:
                 mRefreshView.setModeBoth();
                 break;
-            case PULL_FROM_UP:
+            case ONLY_REFREESH:
                 mRefreshView.setModePullFromUp();
-                break;
-            case PULL_FROM_DOWN:
-                mRefreshView.setModePullFromDown();
                 break;
             case DISABLED:
                 mRefreshView.setModeDisabled();

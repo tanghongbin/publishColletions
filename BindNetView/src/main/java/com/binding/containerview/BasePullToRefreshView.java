@@ -187,7 +187,7 @@ public abstract class BasePullToRefreshView<VIEW extends View> extends FrameLayo
 //        if (mSmartRefreshLayout.isEnableLoadmore() && mSmartRefreshLayout.refresh()) {
 //            mode = BindNetMode.BOTH;
 //        } else if (!mSmartRefreshLayout.isEnableLoadmore() && mSmartRefreshLayout.isEnableRefresh()) {
-//            mode = BindNetMode.PULL_FROM_UP;
+//            mode = BindNetMode.ONLY_LOAD_MORE;
 //        } else if (mSmartRefreshLayout.isEnableLoadmore() && !mSmartRefreshLayout.isEnableRefresh()) {
 //            mode = BindNetMode.PULL_FROM_DOWN;
 //        } else if (!mSmartRefreshLayout.isEnableLoadmore() && !mSmartRefreshLayout.isEnableRefresh()) {

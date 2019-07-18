@@ -8,18 +8,41 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <Button android:layout_width="wrap_content"
-            android:text="图片墙"
-            android:onClick="photoWall"
-            android:layout_height="wrap_content"/>
+    <LinearLayout android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+        <Button android:layout_width="wrap_content"
+                android:text="每页100个，再次点击10个"
+                android:maxWidth="100dp"
+                android:gravity="center_vertical"
+                android:onClick="setupPageSize"
+                android:layout_height="@dimen/height_50"/>
+        <Button android:layout_width="wrap_content"
+                android:text="刷新，加载"
+                android:gravity="center_vertical"
+                android:onClick="both"
+                android:layout_height="@dimen/height_50"/>
+        <Button android:layout_width="wrap_content"
+                android:text="全部警用"
+                android:gravity="center_vertical"
+                android:onClick="disabled"
+                android:layout_height="@dimen/height_50"/>
 
-    <com.binding.newbindview.BindMenuListView
+        <Button android:layout_width="wrap_content"
+                android:text="只能刷新"
+                android:gravity="center_vertical"
+                android:onClick="refresh"
+                android:layout_height="@dimen/height_50"/>
+
+    </LinearLayout>
+
+    <com.binding.newbindview.BindListContentView
             android:layout_width="match_parent"
-                                                 android:id="@+id/mBindList"
-                                                 app:managerType="list"
-                                                 android:layout_height="match_parent">
+            android:layout_weight="1"
+            android:id="@+id/mBindList"
+            app:managerType="list"
+            android:layout_height="match_parent">
 
-    </com.binding.newbindview.BindMenuListView>
+    </com.binding.newbindview.BindListContentView>
 
 
 </LinearLayout>

@@ -20,6 +20,7 @@ import com.binding.DefaultErrorView;
 import com.binding.R;
 import com.binding.containerview.BasePullToRefreshView;
 import com.binding.interfaces.BindNetAdapter;
+import com.binding.interfaces.BindNetMode;
 import com.binding.interfaces.BindRefreshListener;
 import com.binding.interfaces.NetRefreshViewInterface;
 
@@ -203,6 +204,14 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
         }
     }
 
+    public int getPageSize(){
+        return mStateManager.getmPageSize();
+    }
+
+    public void setPageSize(int pageSize){
+        mStateManager.setmPageSize(pageSize);
+    }
+
 
     public int getCurrntPage(){
         return mStateManager.getCurrentPage();
@@ -239,6 +248,10 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
         mStateManager.notifyObserverDataChanged();
     }
 
+
+    public void setMode(BindNetMode mode){
+        mStateManager.setMode(mode);
+    }
 
     /***
      * 给空view和错误view添加添加事件

@@ -25,3 +25,7 @@ example:
                   resources.getColor(R.color.third_transparent), dip2px(this,6f), 0, 0)
 
 
+10.弹幕view  -   implementation 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
+                   implementation 'com.github.ctiao:ndkbitmap-armv7a:0.9.21'
+
+                 使用参考： CustomBlibliDemoExample

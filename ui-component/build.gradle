@@ -2,30 +2,30 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
-ext {
-
-    bintrayRepo = 'maven'
-    bintrayName = 'ui-component'
-
-    publishedGroupId = 'com.develop.android'
-    libraryName = 'ui-component'
-    artifact = 'ui-component'
-
-    libraryDescription = 'a very useful UI library'
-
-    siteUrl = 'https://github.com/tanghongbin/publishColletions'
-    gitUrl = 'https://github.com/tanghongbin/publishColletions'
-
-    libraryVersion = '1.1.0'
-
-    developerId = 'tanghongbin'
-    developerName = 'tanghongbin'
-    developerEmail = '18780475970@163.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
+//ext {
+//
+//    bintrayRepo = 'maven'
+//    bintrayName = 'ui-component'
+//
+//    publishedGroupId = 'com.develop.android'
+//    libraryName = 'ui-component'
+//    artifact = 'ui-component'
+//
+//    libraryDescription = 'a very useful UI library'
+//
+//    siteUrl = 'https://github.com/tanghongbin/publishColletions'
+//    gitUrl = 'https://github.com/tanghongbin/publishColletions'
+//
+//    libraryVersion = '1.1.0'
+//
+//    developerId = 'tanghongbin'
+//    developerName = 'tanghongbin'
+//    developerEmail = '18780475970@163.com'
+//
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+//}
 
 android {
     compileSdkVersion 28
@@ -64,6 +64,6 @@ repositories {
 
 //Add these lines to publish library to bintray
 //Place it at the end of the file
-apply from: 'bintray.gradle'
-apply from: 'install.gradle'
+//apply from: 'bintray.gradle'
+//apply from: 'install.gradle'
 

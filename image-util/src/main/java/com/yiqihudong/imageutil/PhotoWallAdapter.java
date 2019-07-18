@@ -53,6 +53,7 @@ public class PhotoWallAdapter extends PagerAdapter {
     protected PhotoWallOnLongItemClickListener onLongItemClickListener;
     protected PhotoWallLoadErrorListener errorListener;
     protected ListenerHolder listenerHolder;
+    private Handler mHandler =new Handler(Looper.getMainLooper());
 
     public PhotoWallLoadErrorListener getErrorListener() {
         return errorListener;
@@ -119,7 +120,12 @@ public class PhotoWallAdapter extends PagerAdapter {
                 if (getErrorListener() != null){
                     getErrorListener().loadError();
                 }else {
-                    photoView.setImageResource(R.drawable.zhanweitu);
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            photoView.setImageResource(R.drawable.zhanweitu);
+                        }
+                    });
                 }
                 Log.i(PhotoWallAdapter.class.getName(),"图片加载失败");
 
@@ -129,7 +135,12 @@ public class PhotoWallAdapter extends PagerAdapter {
             @Override
             public boolean onResourceReady(final Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                 Log.i(PhotoWallAdapter.class.getName(),"图片加载成功");
-                photoView.setImageDrawable(resource);
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        photoView.setImageDrawable(resource);
+                    }
+                });
                 return false;
             }
 
