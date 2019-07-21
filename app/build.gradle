@@ -35,4 +35,5 @@ dependencies {
     //    compile 'com.develop.thb:BindNetView:1.8.1'
     implementation project(':image-util')
     implementation project(':simpleDimension')
+    implementation project(':common-utils')
 }

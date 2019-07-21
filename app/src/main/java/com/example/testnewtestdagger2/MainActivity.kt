@@ -28,6 +28,7 @@ import com.binding.interfaces.BindNetAdapter
 import com.binding.interfaces.BindNetMode
 import com.yiqihudong.imageutil.ImageSelectedHelper
 import com.yiqihudong.imageutil.callback.SelectPicCallback
+import publish.tang.common.commonutils.mediautils.MediaUtils
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,19 +40,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         mBindList.setAdapter(CustomAdapter(R.layout.item, mBindList.totalList as MutableList<String>?))
 
-        mBindList.setOnRefresshListener(object :BindRefreshListener{
-            override fun pullDownRefresh() {
-                mBindList.resetPage()
-                loadData(1)
-            }
 
-            override fun pullUpToLoadMore() {
-                loadData(mBindList.currntPage)
-            }
+        var voiceList = MediaUtils.getLocalAudioFromDataBase(this,1,1,"")
+        var videoList = MediaUtils.getLocalVideoFromDataBase(this,1,2,"")
 
-        })
-
-
+        Log.d("TAG","打印视频:${videoList}\n 数量：" + (videoList?.size ?: 0) )
+        Log.d("TAG","打印音乐:${voiceList}\n${+ (voiceList?.size ?: 0) }")
     }
 
     fun loadData(pageNo:Int){

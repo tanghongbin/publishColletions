@@ -1,1 +1,1 @@
-include ':app', ':BindNetView', ':image-util', ':ui-component', ':android_base', ':simpleDimension'
+include ':app', ':BindNetView', ':image-util', ':ui-component', ':android_base', ':simpleDimension', ':common-utils'
