@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +21,6 @@ import java.util.Map;
 import com.binding.ClickableView;
 import com.binding.DefaultErrorView;
 import com.binding.R;
-import com.binding.containerview.BasePullToRefreshView;
 import com.binding.interfaces.BindNetAdapter;
 import com.binding.interfaces.BindNetMode;
 import com.binding.interfaces.BindRefreshListener;
@@ -29,6 +31,7 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
     private ListViewContentStateManager mStateManager;
     private ViewConverter mViewConverter;
     protected Context mContext;
+    private String errorViewClass;
 
 
 
@@ -53,6 +56,7 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
         int mEmptyImageRes = typedArray.getResourceId(R.styleable.AbsBindContentView_emptyImage, 0);
         String mEmptyMessage = typedArray.getString(R.styleable.AbsBindContentView_emptyMessage);
         String mErrorMessage = typedArray.getString(R.styleable.AbsBindContentView_errorMessage);
+        errorViewClass = typedArray.getString(R.styleable.AbsBindContentView_errorViewClass);
         boolean enabledPreLoadView = typedArray.getBoolean(R.styleable.AbsBindContentView_enabledPreLoadView,true);
         typedArray.recycle();
 
@@ -125,13 +129,34 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
      * 当默认显示内容为空时，填充默认视图
      */
     protected ClickableView getnerateErrorView(Context context, int errorRes,String errorMsg) {
-        DefaultErrorView defaultErrorView = new DefaultErrorView(context);
-        if (errorRes != 0) {
-            defaultErrorView.setErrorImage(errorRes);
+        // 如果是自定义错误view的话就不使用errorRes和errorMsg
+        ClickableView clickableView = null;
+        if (!TextUtils.isEmpty(errorViewClass)){
+            try {
+                Class errorView = Class.forName(errorViewClass);
+                Constructor construct = errorView.getConstructor(Context.class);
+                clickableView = (ClickableView) construct.newInstance(context);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        } else  {
+            clickableView = new DefaultErrorView(context);
+            if (errorRes != 0) {
+                ((DefaultErrorView) clickableView).setErrorImage(errorRes);
+            }
+
+            ((DefaultErrorView) clickableView).setErrorMessage(errorMsg);
         }
 
-        defaultErrorView.setErrorMessage(errorMsg);
-        return defaultErrorView;
+        return clickableView;
     }
 
 
@@ -228,7 +253,7 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
 
 
     /***
-     * 绑定数据
+     * 绑定数据,此方法调用之后必须调用 notifyObserverDataChanged 方法
      * @param itemList
      */
     public void bindList(List itemList){
@@ -245,7 +270,31 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
      * 通知数据改变
      */
     public void notifyObserverDataChanged() {
-        mStateManager.notifyObserverDataChanged();
+        notifyObserverDataChanged(BindViewNotifyStatus.ALL_CHANGE,-1);
+    }
+
+
+    /***
+     * 通知数据改变,
+     * position: 开始位置,
+     * count 数量 --  仅为notifyRange时有效
+     */
+    public void notifyObserverDataChanged(BindViewNotifyStatus status,int position,int count) {
+        mStateManager.notifyObserverDataChanged(status,position,count);
+    }
+
+    public void notifyObserverDataChanged(BindViewNotifyStatus status,int position){
+        notifyObserverDataChanged(status,position,-1);
+    }
+
+
+
+    /***
+     * 通知数据改变,并添加提示信息
+     */
+    public void notifyObserverDataChanged(String hintMsg) {
+        // 暂不支持
+        throw new NullPointerException("暂不支持此方法");
     }
 
 
@@ -260,10 +309,10 @@ public abstract class AbsBindContentView extends FrameLayout implements ListView
     public void setNoContentClick(OnClickListener onClickListener){
 
         Map<ViewConverter.ContentStates, View> viewMaps = mViewConverter.getmStatusMap();
-        DefaultErrorView emptyView = (DefaultErrorView) viewMaps.get(ViewConverter.ContentStates.EMPTY);
+        ClickableView emptyView = (ClickableView) viewMaps.get(ViewConverter.ContentStates.EMPTY);
         emptyView.setNoContentClickListener(onClickListener);
 
-        DefaultErrorView errorView = (DefaultErrorView) viewMaps.get(ViewConverter.ContentStates.NET_ERROR);
+        ClickableView errorView = (ClickableView) viewMaps.get(ViewConverter.ContentStates.NET_ERROR);
         errorView.setNoContentClickListener(onClickListener);
 
     }

@@ -26,6 +26,7 @@ import com.baoyz.swipemenulistview.SwipeMenuCreator
 import com.baoyz.swipemenulistview.SwipeMenuListView
 import com.binding.interfaces.BindNetAdapter
 import com.binding.interfaces.BindNetMode
+import com.binding.newbindview.BindViewNotifyStatus
 import com.yiqihudong.imageutil.ImageSelectedHelper
 import com.yiqihudong.imageutil.callback.SelectPicCallback
 import publish.tang.common.commonutils.mediautils.MediaUtils
@@ -39,13 +40,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mBindList.setAdapter(CustomAdapter(R.layout.item, mBindList.totalList as MutableList<String>?))
+        loadData(1)
+        mBindList.setOnRefresshListener(object : BindRefreshListener{
+            override fun pullDownRefresh() {
+                mBindList.resetPage()
+                loadData(1)
+            }
 
+            override fun pullUpToLoadMore() {
+                loadData(mBindList.currntPage)
+            }
 
-        var voiceList = MediaUtils.getLocalAudioFromDataBase(this,1,1,"")
-        var videoList = MediaUtils.getLocalVideoFromDataBase(this,1,2,"")
-
-        Log.d("TAG","打印视频:${videoList}\n 数量：" + (videoList?.size ?: 0) )
-        Log.d("TAG","打印音乐:${voiceList}\n${+ (voiceList?.size ?: 0) }")
+        })
     }
 
     fun loadData(pageNo:Int){
@@ -65,8 +71,12 @@ class MainActivity : AppCompatActivity() {
         if (pageNo > 3) {
             list = null
         }
+        var itemCount = 0
+        if (list != null){
+            itemCount = list.size
+        }
         mBindList.bindList(list)
-        mBindList.notifyObserverDataChanged()
+        mBindList.notifyObserverDataChanged(BindViewNotifyStatus.RANGE_INSERT,mBindList.totalList.size,itemCount)
     }
 
     fun setupPageSize(view:View?){

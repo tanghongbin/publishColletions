@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <com.binding.newbindview.BindListContentView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/mBindList"
+            app:errorViewClass="com.example.testnewtestdagger2.CustomErrorClass"
+            app:managerType="list"
+            android:layout_height="match_parent">
+
+    </com.binding.newbindview.BindListContentView>
+</android.support.constraint.ConstraintLayout>

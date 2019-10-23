@@ -7,6 +7,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
         
     }
     dependencies {
@@ -29,6 +30,7 @@ allprojects {
         maven {
             url 'https://novoda.bintray.com/snapshots'
         }
+        maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
     }
 
     tasks.withType(Javadoc).all {

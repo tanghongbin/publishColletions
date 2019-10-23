@@ -36,7 +36,8 @@ public class ExtendPullToRefreshRecycleView extends BasePullToRefreshView<Recycl
 
     @Override
     public void setBindNetAdapter(BindNetAdapter adapter) {
-        mrefreshView.setAdapter((RecyclerView.Adapter) adapter);
+        RecyclerView.Adapter resultAdapter = (RecyclerView.Adapter) adapter;
+        mrefreshView.setAdapter(resultAdapter);
     }
 
 

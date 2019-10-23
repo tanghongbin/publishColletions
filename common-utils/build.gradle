@@ -25,29 +25,29 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
 }
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'common-utils'
-
-    publishedGroupId = 'com.tang'
-    libraryName = 'common-utils'
-    artifact = 'common-utils'
-
-    libraryDescription = '储备了一些常用的工具类'
-
-    siteUrl = 'https://github.com/tanghongbin/publishColletions'
-    gitUrl = 'https://github.com/tanghongbin/publishColletions'
-
-    libraryVersion = '1.5.0'
-
-    developerId = 'tanghongbin'
-    developerName = 'tanghongbin'
-    developerEmail = '18780475970@163.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
+//ext {
+//    bintrayRepo = 'maven'
+//    bintrayName = 'common-utils'
 //
-apply from: 'bintray.gradle'
-apply from: 'install.gradle'
+//    publishedGroupId = 'com.tang'
+//    libraryName = 'common-utils'
+//    artifact = 'common-utils'
+//
+//    libraryDescription = '储备了一些常用的工具类'
+//
+//    siteUrl = 'https://github.com/tanghongbin/publishColletions'
+//    gitUrl = 'https://github.com/tanghongbin/publishColletions'
+//
+//    libraryVersion = '1.5.0'
+//
+//    developerId = 'tanghongbin'
+//    developerName = 'tanghongbin'
+//    developerEmail = '18780475970@163.com'
+//
+//    licenseName = 'The Apache Software License, Version 2.0'
+//    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//    allLicenses = ["Apache-2.0"]
+//}
+////
+//apply from: 'bintray.gradle'
+//apply from: 'install.gradle'

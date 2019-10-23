@@ -11,29 +11,24 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity
-                android:theme="@style/customTheme"
-                android:name=".SecondActivity">
+                android:name=".ScrollingActivity"
+                android:label="@string/title_activity_scrolling"
+                android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
         <activity
-                android:theme="@style/customTheme"
-                android:name=".MainActivity">
+                android:name=".SecondActivity"
+                android:theme="@style/customTheme">
+        </activity>
+        <activity
+                android:name=".MainActivity"
+                android:theme="@style/customTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-
-        <!--<provider-->
-                <!--android:name=".CustomFileProvider"-->
-                <!--android:authorities="com.publishgallery.custom.auth.com.example"-->
-                <!--android:exported="false"-->
-                <!--android:grantUriPermissions="true">-->
-            <!--<meta-data-->
-                    <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
-                    <!--android:resource="@xml/file_paths"></meta-data>-->
-        <!--</provider>-->
     </application>
 
 </manifest>

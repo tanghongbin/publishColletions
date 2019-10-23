@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.binding.interfaces.BindNetAdapter;
+import com.binding.interfaces.BindNetAllAdapter;
 import com.binding.interfaces.BindNetMode;
 import com.binding.interfaces.BindRefreshListener;
 import com.binding.interfaces.NetRefreshViewInterface;
@@ -49,17 +50,78 @@ public class ListViewContentStateManager {
         return mTotalList;
     }
 
+
     /***
      * 通知数据改变
+     * @param status
      */
-    public void notifyObserverDataChanged() {
+    public void notifyObserverDataChanged(BindViewNotifyStatus status,int position,int count) {
         if (mAdapter == null) {
             throw new NullPointerException("adater 不能为空");
         }
-        mAdapter.notifyMetaDataChange();
+
+        if (mPageNum == mInitPage){
+            mAdapter.notifyMetaDataChange();
+            bindingListChanged();
+            return;
+        }
+
         bindingListChanged();
+
+        if (mAdapter instanceof BindNetAllAdapter) {
+
+            BindNetAllAdapter resultAdapter = (BindNetAllAdapter) mAdapter;
+            if (status.ordinal() == BindViewNotifyStatus.ALL_CHANGE.ordinal()){
+                resultAdapter.notifyMetaDataChange();
+                return;
+            }
+
+            if (position < 0) {
+                return;
+            }
+
+        switch (status){
+
+            case ITEM_CHANGE:
+                resultAdapter.customNotifyItemChanged(position);
+                break;
+
+            case ITEM_INSERT:
+                resultAdapter.customNotifyItemInsert(position);
+                break;
+
+            case ITEM_REMOVE:
+                resultAdapter.customNotifyItemRemoved(position);
+                break;
+
+            case ITEN_MOVE:
+
+                throw new IllegalStateException("暂不支持item移动");
+          }
+
+            if (position < 0 || count <= 0) {
+                return;
+            }
+          switch (status){
+                case RANGE_CHANGE:
+                    resultAdapter.customNotityRangeChanged(position,count);
+                    break;
+
+                case RANGE_INSERT:
+                    resultAdapter.customNotifyRangeInsert(position,count);
+                    break;
+
+                case RANGE_REMOVE:
+                    resultAdapter.customNotifyRangeRemove(position,count);
+                    break;
+            }
+
+        } else {
+            mAdapter.notifyMetaDataChange();
+        }
         // 设置错误提示内容
     }
+
 
     public int getmPageSize() {
         return mPageSize;
@@ -175,10 +237,21 @@ public class ListViewContentStateManager {
     }
 
 
+    /**
+     * 请使用另一个setmAdapter方法
+     * @param mAdapter
+     */
+    @Deprecated()
     public void setmAdapter(BindNetAdapter mAdapter) {
         this.mAdapter = mAdapter;
         mRefreshView.setBindNetAdapter(mAdapter);
     }
+
+    public void setmAdapter(BindNetAllAdapter mAdapter) {
+        this.mAdapter = mAdapter;
+        mRefreshView.setBindNetAdapter(mAdapter);
+    }
+
 
     public void setmNotifyStateChangedListener(NotifyStateChangedListener mNotifyStateChangedListener) {
         this.mNotifyStateChangedListener = mNotifyStateChangedListener;
